@@ -6,6 +6,7 @@ import Login from "../Pages/LoginPage";
 import PrivateRoutes from "../PrivateRotes/PrivateRoutes";
 import Archive from "../Pages/Archive";
 import DetailNote from "../Pages/DetailNote";
+import AddNote from "../Pages/AddNote";
 
 const Layout = () => {
   return (
@@ -38,16 +39,12 @@ export const router = createBrowserRouter([
         element: <PrivateRoutes><Archive /></PrivateRoutes>,
       },
       {
-        path: "/active",
-        element: <PrivateRoutes><p>active</p></PrivateRoutes>,
-      },
-      {
         path: "/notes/:id",
         element: <PrivateRoutes><DetailNote /></PrivateRoutes>,
       },
       {
         path: "/notes/new",
-        element: <PrivateRoutes><p>new</p></PrivateRoutes>,
+        element: <PrivateRoutes><AddNote /></PrivateRoutes>,
       },
     ],
   },

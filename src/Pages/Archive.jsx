@@ -4,19 +4,24 @@ import { getArchivedNotes } from "../utils/api";
 
 export default function Archive() {
   const [notes, setNotes] = useState([]);
-
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     const getNotes = () => {
       getArchivedNotes().then((res) => {
-        setNotes(res.data);
+        try {
+          setNotes(res.data);
+          setLoading(false)
+        } catch (error) {
+          alert(error)
+        }
       });
     };
     getNotes();
-  });
+  }, []);
   return (
     <main>
       <h2>Archive Note</h2>
-      <NoteList notes={notes} />
+      {!loading ? <NoteList notes={notes} /> : <p>Loading...</p>}
     </main>
   );
 }

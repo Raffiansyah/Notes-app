@@ -9,6 +9,8 @@ const PrivateRoutes = (props) => {
     return (
       <Navigate to="/login" />
     )
+  } else {
+    <Navigate to='/' />
   }
 
   return props.children;

@@ -22,11 +22,11 @@ export default function Login({
         getUserLogged().then((res) => {
           try {
             setUser(res.data);
+            navigate("/");
           } catch (error) {
             alert(error);
             setUser(null);
           }
-          navigate("/");
         });
       }
     });

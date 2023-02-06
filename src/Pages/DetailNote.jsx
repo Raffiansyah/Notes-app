@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ButtonAction from "../component/ButtonAction/ButtonAction";
 import NoteDetail from "../component/NoteDetail/NoteDetail";
-import { getNote } from "../utils/api";
+import { getNote, archiveNote, unarchiveNote, deleteNote } from "../utils/api";
 
 export default function DetailNote() {
   const { id } = useParams();
-  const [notes, setNotes] = useState([]);
-
+  const [notes, setNotes] = useState({});
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const getDetailNote = () => {
       getNote(id).then((res) => {
         try {
           setNotes(res.data);
+          setLoading(false);
         } catch (error) {
-          alert(error)
+          alert(error);
         }
       });
     };
@@ -23,10 +25,21 @@ export default function DetailNote() {
   return (
     <main>
       <section className="detail-page">
-        <NoteDetail
-          title={notes.title}
-          createdAt={notes.createdAt}
-          body={notes.body}
+        {!loading ? (
+          <NoteDetail
+            title={notes.title}
+            createdAt={notes.createdAt}
+            body={notes.body}
+          />
+        ) : (
+          <p>Loading...</p>
+        )}
+        <ButtonAction
+          id={notes.id}
+          archived={notes.archived}
+          archiveNote={archiveNote}
+          unarchiveNote={unarchiveNote}
+          deleteNote={deleteNote}
         />
       </section>
     </main>
