@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.scss";
 import Navigation from "../Navigation/Navigation";
 import Logout from '../Logout/Logout'
 
@@ -8,7 +7,7 @@ export default function Navbar() {
   return (
     <header>
       <h1>
-        <Link to={"/"}>Notes App</Link>
+        <Link to="/">Notes App</Link>
       </h1>
       <Navigation />
       <button className="toggle-locale" type="button">

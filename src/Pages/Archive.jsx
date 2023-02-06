@@ -1,25 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import NoteList from "../component/NoteList/NoteList";
-import { getActiveNotes } from "../utils/api";
+import { getArchivedNotes } from "../utils/api";
 
-export default function Home() {
+export default function Archive() {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     const getNotes = () => {
-      getActiveNotes().then((res) => {
-        try {
-          setNotes(res.data);
-        } catch (error) {
-          alert(error)
-        }
+      getArchivedNotes().then((res) => {
+        setNotes(res.data);
       });
     };
     getNotes();
-  }, []);
+  });
   return (
     <main>
-      <h2>Active Note</h2>
+      <h2>Archive Note</h2>
       <NoteList notes={notes} />
     </main>
   );

@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { getAccessToken } from "../../utils/api";
+import { UserContext } from "../../Context/UserContext";
 
 export default function Navigation() {
-  const user = getAccessToken();
+  const { user } = useContext(UserContext);
 
-  if(user !== null){
+  if (user !== null) {
     return (
-        <h2>
-            <Link to='/archive'>Archived</Link>
-        </h2>
-    )
+      <h2>
+        <Link to="/archive">Archived</Link>
+      </h2>
+    );
   }
 }

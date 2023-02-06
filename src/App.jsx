@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { RouterProvider } from "react-router-dom";
 import "./app.scss";
 import { UserContext } from "./Context/UserContext";
 import { router } from "./Router/Routes";
-import { getUserLogged } from "./utils/api";
 
 
 export default function App() {
@@ -16,7 +15,7 @@ export default function App() {
 
   return (
     <UserContext.Provider value={userContextValue}>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </UserContext.Provider>
   );
 }

@@ -1,20 +1,17 @@
 import React, { useContext } from "react";
-import { getAccessToken } from "../../utils/api";
 import { UserContext } from "../../Context/UserContext";
 
 export default function Logout() {
   const { user } = useContext(UserContext);
-  const userInfo = getAccessToken();
 
   const Logout = () => {
     localStorage.removeItem("accessToken");
     window.location = "/";
   };
 
-  console.log(user);
-  if (userInfo !== null) {
+  if (user !== null) {
     return (
-      <button type="button" title="LogOut" onClick={Logout} className='logout-btn'>
+      <button type="button" title="LogOut" onClick={Logout} className='button-logout'>
         <svg
           stroke="currentColor"
           fill="currentColor"

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./register.scss";
+import PropTypes from "prop-types";
 
 export default function Register({ register, useInput }) {
   const [name, setName] = useInput("");
@@ -16,18 +16,20 @@ export default function Register({ register, useInput }) {
       alert("Password must be same with Confirm Password");
     } else {
       register({ name, email, password }).then((res) => {
-        if (!res.error) {
+        try {
           alert("succes created");
           navigate("/login");
+        } catch (error) {
+          alert(error);
         }
       });
     }
   };
 
   return (
-    <section className="regis-app">
+    <section className="regis-page">
       <h1>Sign Up</h1>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit} className="input-register">
         <label htmlFor="name">Name</label>
         <input type="text" id="name" value={name} onChange={setName} required />
         <label htmlFor="email">Email</label>
@@ -67,3 +69,8 @@ export default function Register({ register, useInput }) {
     </section>
   );
 }
+
+Register.propTypes = {
+  register: PropTypes.func.isRequired,
+  useInput: PropTypes.func.isRequired,
+};

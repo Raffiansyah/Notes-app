@@ -1,12 +1,17 @@
-import { Navigate } from "react-router-dom"
-import { getAccessToken } from "../utils/api"
+import React, { useContext } from "react";
+import { Navigate } from "react-router-dom";
+import { UserContext } from "../Context/UserContext";
 
-const PrivateRoutes = (props) =>{
-    const user = getAccessToken()
-    
-    if(user === null) return <Navigate to='/login' />
+const PrivateRoutes = (props) => {
+  const { user } = useContext(UserContext);
 
-    return props.children
-}
+  if (user === null){
+    return (
+      <Navigate to="/login" />
+    )
+  }
 
-export default PrivateRoutes
+  return props.children;
+};
+
+export default PrivateRoutes;
