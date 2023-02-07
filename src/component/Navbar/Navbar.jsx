@@ -2,17 +2,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import Logout from "../Logout/Logout";
-import { ThemeContext } from "../../Context/ThemeContext";
+import UseTheme from "../../hooks/UseTheme";
 
 export default function Navbar() {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const [theme, changeTheme] = UseTheme()
 
-  const changeTheme = (value) => {
-    setTheme(value);
-    const root = window.document.documentElement;
-    root.setAttribute("data-theme", value);
-    localStorage.setItem("theme", value);
-  };
+  
   return (
     <header>
       <h1>

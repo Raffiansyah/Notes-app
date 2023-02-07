@@ -26,21 +26,23 @@ export default function DetailNote() {
     <main>
       <section className="detail-page">
         {!loading ? (
-          <NoteDetail
-            title={notes.title}
-            createdAt={notes.createdAt}
-            body={notes.body}
-          />
+          <>
+            <NoteDetail
+              title={notes.title}
+              createdAt={notes.createdAt}
+              body={notes.body}
+            />
+            <ButtonAction
+              id={notes.id}
+              archived={notes.archived}
+              archiveNote={archiveNote}
+              unarchiveNote={unarchiveNote}
+              deleteNote={deleteNote}
+            />
+          </>
         ) : (
           <p>Loading...</p>
         )}
-        <ButtonAction
-          id={notes.id}
-          archived={notes.archived}
-          archiveNote={archiveNote}
-          unarchiveNote={unarchiveNote}
-          deleteNote={deleteNote}
-        />
       </section>
     </main>
   );

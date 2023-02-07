@@ -19,15 +19,15 @@ export default function Login({
     login({ email, password }).then((res) => {
       if (!res.error) {
         putAccessToken(res.data.accessToken);
-        getUserLogged().then((res) => {
-          try {
-            setUser(res.data);
-            navigate("/");
-          } catch (error) {
-            alert(error);
-            setUser(null);
-          }
-        });
+        getUserLogged()
+          .then((res) => {
+            try {
+              setUser(res.data)
+              navigate('/')
+            } catch (error) {
+              alert(error)
+            }
+          })
       }
     });
   };

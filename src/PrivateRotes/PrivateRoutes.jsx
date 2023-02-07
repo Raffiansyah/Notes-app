@@ -4,7 +4,6 @@ import { UserContext } from "../Context/UserContext";
 
 const PrivateRoutes = (props) => {
   const { user } = useContext(UserContext);
-
   if (user === null){
     return (
       <Navigate to="/login" />
