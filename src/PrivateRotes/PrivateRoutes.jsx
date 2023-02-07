@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
 
@@ -8,8 +8,6 @@ const PrivateRoutes = (props) => {
     return (
       <Navigate to="/login" />
     )
-  } else {
-    <Navigate to='/' />
   }
 
   return props.children;

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContext";
 
@@ -9,7 +9,7 @@ export default function Login({
   login,
   putAccessToken,
 }) {
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useInput("");
   const [password, setPassword] = useInput("");
   const navigate = useNavigate();
@@ -23,7 +23,6 @@ export default function Login({
           .then((res) => {
             try {
               setUser(res.data)
-              navigate('/')
             } catch (error) {
               alert(error)
             }
@@ -31,6 +30,12 @@ export default function Login({
       }
     });
   };
+
+  useEffect(() => {
+    if(user) {
+      navigate('/')
+    }
+  }, [user])
 
   return (
     <section className="login-page">

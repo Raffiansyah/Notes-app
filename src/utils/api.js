@@ -1,4 +1,4 @@
-const BASE_URL = "https://notes-api.dicoding.dev/v1";
+const BASE_URL = 'https://notes-api.dicoding.dev/v1';
 
 function getAccessToken() {
   return localStorage.getItem("accessToken");
